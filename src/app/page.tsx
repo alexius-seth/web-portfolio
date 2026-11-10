@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-obsidian flex flex-col">
       <Navbar />
-      <main className="flex-1 max-w-6xl w-full mx-auto px-6">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Hero />
         <Projects />
         <TechMatrix />

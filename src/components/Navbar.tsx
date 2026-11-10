@@ -3,7 +3,7 @@ import { Terminal } from "lucide-react";
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-obsidian-border bg-obsidian/90 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-4 font-mono text-xs">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4 font-mono text-xs sm:text-sm">
         {/* Terminal node identifier */}
         <div className="flex items-center gap-2">
           <Terminal className="w-4 h-4 text-slate-muted" />

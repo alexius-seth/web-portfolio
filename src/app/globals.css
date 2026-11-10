@@ -13,3 +13,16 @@ body {
   background-color: var(--bg-obsidian);
   color: var(--text-slate);
 }
+
+@keyframes laserScan {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+.animate-scanline {
+  animation: laserScan 0.8s ease-out forwards;
+}

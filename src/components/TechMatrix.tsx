@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Terminal, Database, Code2, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TypewriterText } from "./TypewriterText";
 
 type FilterId = "ALL" | "SQL SERVER" | "POSTGRESQL" | "MYSQL" | "DESKTOP / CV" | "WEB & PWA";
 
@@ -98,12 +100,12 @@ export function TechMatrix() {
           </h2>
         </div>
         <p className="font-mono text-xs text-slate-muted max-w-sm">
-          System runtimes, relational database engines, and client-side application frameworks.
+          <TypewriterText text="System runtimes, relational database engines, and client-side application frameworks." />
         </p>
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+      <div className="flex flex-wrap items-center gap-2 font-mono text-xs overflow-x-auto pb-2 sm:pb-0">
         <span className="text-slate-muted mr-1 text-[11px] uppercase tracking-wider select-none">
           FILTER:
         </span>
@@ -113,7 +115,7 @@ export function TechMatrix() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-3 py-1.5 rounded text-xs font-mono transition-all border ${
+              className={`px-3 py-1.5 rounded text-xs font-mono transition-all border whitespace-nowrap ${
                 isActive
                   ? "bg-accent-emerald text-obsidian border-accent-emerald font-bold shadow-glow"
                   : "bg-obsidian-surface text-slate-muted border-obsidian-border hover:border-slate-muted hover:text-slate-text"
@@ -126,13 +128,13 @@ export function TechMatrix() {
       </div>
 
       {/* 4-Card Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
         {CATEGORIES.map((category) => {
           const Icon = category.icon;
           return (
             <div
               key={category.title}
-              className="rounded-lg bg-obsidian-surface border border-obsidian-border p-6 flex flex-col justify-between space-y-5"
+              className="rounded-lg bg-obsidian-surface border border-obsidian-border p-5 flex flex-col justify-start space-y-3"
             >
               {/* Category Header */}
               <div className="flex items-center justify-between pb-3 border-b border-obsidian-border/80">
@@ -151,27 +153,41 @@ export function TechMatrix() {
                 </div>
               </div>
 
-              {/* Badges */}
+              {/* Badges with Framer Motion Layout Transitions */}
               <div className="flex flex-wrap gap-2 pt-1">
-                {category.skills.map((skill) => {
-                  const matches =
-                    activeFilter === "ALL" || skill.filters.includes(activeFilter);
+                <AnimatePresence mode="popLayout">
+                  {category.skills.map((skill) => {
+                    const matches =
+                      activeFilter === "ALL" || skill.filters.includes(activeFilter);
 
-                  return (
-                    <span
-                      key={skill.name}
-                      className={`font-mono text-xs px-3 py-1.5 rounded border transition-all duration-300 ${
-                        matches
-                          ? activeFilter === "ALL"
-                            ? "bg-obsidian border-obsidian-border text-slate-text"
-                            : "bg-obsidian border-accent-emerald text-accent-emerald shadow-glow font-medium"
-                          : "bg-obsidian/40 border-obsidian-border/40 text-slate-600 opacity-30 select-none"
-                      }`}
-                    >
-                      {skill.name}
-                    </span>
-                  );
-                })}
+                    return (
+                      <motion.span
+                        key={skill.name}
+                        layout
+                        initial={false}
+                        animate={{
+                          scale: matches ? 1 : 0.95,
+                          opacity: matches ? 1 : 0.2,
+                          borderColor: matches
+                            ? activeFilter === "ALL"
+                              ? "#334155"
+                              : "#10B981"
+                            : "#0f172a",
+                        }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className={`font-mono text-xs px-3 py-1.5 rounded border ${
+                          matches
+                            ? activeFilter === "ALL"
+                              ? "bg-obsidian text-slate-text"
+                              : "bg-obsidian text-accent-emerald shadow-glow font-medium"
+                            : "bg-obsidian/40 text-slate-600 select-none"
+                        }`}
+                      >
+                        {skill.name}
+                      </motion.span>
+                    );
+                  })}
+                </AnimatePresence>
               </div>
             </div>
           );

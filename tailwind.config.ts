@@ -27,6 +27,15 @@ const config: Config = {
         glow: "0 0 20px -3px rgba(16, 185, 129, 0.3)",
         "glow-cyan": "0 0 20px -3px rgba(6, 182, 212, 0.3)",
       },
+      keyframes: {
+        laserScan: {
+          "0%": { top: "-10%" },
+          "100%": { top: "110%" },
+        },
+      },
+      animation: {
+        scanline: "laserScan 0.8s ease-out forwards",
+      },
       fontFamily: {
         display: [
           "'Space Grotesk'",

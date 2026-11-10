@@ -1,4 +1,5 @@
 import { ExternalLink, Terminal, Cpu, Database, BookOpen, Clock } from "lucide-react";
+import { TypewriterText } from "./TypewriterText";
 
 function GithubIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   return (
@@ -102,7 +103,7 @@ export function Projects() {
           </h2>
         </div>
         <p className="font-mono text-xs text-slate-muted max-w-sm">
-          Architectural breakdowns of production systems, computer vision runtimes, and local-first ledgers.
+          <TypewriterText text="Architectural breakdowns of production web systems, desktop runtimes, and local-first ledgers." />
         </p>
       </div>
 
@@ -113,8 +114,11 @@ export function Projects() {
           return (
             <article
               key={proj.title}
-              className="group relative flex flex-col justify-between rounded-lg bg-obsidian-surface border border-obsidian-border hover:border-accent-emerald hover:shadow-glow transition-all duration-300 p-6 space-y-5"
+              className="group relative overflow-hidden flex flex-col justify-between rounded-lg bg-obsidian-surface border border-obsidian-border hover:border-accent-emerald hover:shadow-glow transition-all duration-300 p-6 space-y-5"
             >
+              {/* Laser Scanline */}
+              <div className="pointer-events-none absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-scanline shadow-[0_0_12px_#10B981]" />
+
               {/* Card Header */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between font-mono text-[11px]">
@@ -158,17 +162,17 @@ export function Projects() {
                         </span>
                       )}
                     </h3>
-                    <p className="text-xs text-slate-muted font-mono mt-0.5">{proj.tagline}</p>
+                    <p className="text-sm text-slate-muted font-mono mt-1">{proj.tagline}</p>
                   </div>
                 </div>
               </div>
 
               {/* Highlights List - 3 max */}
               <div className="space-y-2">
-                <ul className="space-y-2 text-xs text-slate-muted">
+                <ul className="space-y-2.5 text-sm text-slate-muted leading-relaxed">
                   {proj.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                      <span className="text-slate-500 font-mono select-none">▸</span>
+                    <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
+                      <span className="text-slate-500 font-mono select-none mt-0.5">▸</span>
                       <span>{highlight}</span>
                     </li>
                   ))}
@@ -177,11 +181,11 @@ export function Projects() {
 
               {/* 3-4 Primary Tech Stack Badges & Links */}
               <div className="space-y-3 pt-3 border-t border-obsidian-border/80">
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {proj.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="font-mono text-[11px] px-2.5 py-0.5 rounded bg-obsidian border border-obsidian-border text-slate-muted"
+                      className="font-mono text-xs px-3 py-1 rounded bg-obsidian border border-obsidian-border text-slate-muted"
                     >
                       {tech}
                     </span>
@@ -193,10 +197,10 @@ export function Projects() {
                     href={proj.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-muted hover:text-slate-text transition-colors"
+                    className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-slate-muted hover:text-slate-text transition-colors"
                   >
                     <span>View Repository</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
 
                   {proj.liveUrl && (
@@ -204,10 +208,10 @@ export function Projects() {
                       href={proj.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-xs text-accent-emerald hover:underline"
+                      className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-accent-emerald hover:underline"
                     >
                       <span>Launch App</span>
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
                 </div>
