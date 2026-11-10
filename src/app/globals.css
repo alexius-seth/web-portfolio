@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-obsidian: #07090E;
+  --text-slate: #E2E8F0;
+  --accent-emerald: #10B981;
+  --accent-cyan: #06B6D4;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--text-slate);
+}
