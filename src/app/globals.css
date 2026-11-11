@@ -9,6 +9,10 @@
   --accent-cyan: #06B6D4;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-obsidian);
   color: var(--text-slate);

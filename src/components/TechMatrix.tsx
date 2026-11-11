@@ -56,6 +56,7 @@ const CATEGORIES: Category[] = [
       { name: "Python", filters: ["DESKTOP / CV"] },
       { name: "Java", filters: ["DESKTOP / CV"] },
       { name: "PHP", filters: ["MYSQL"] },
+      { name: "JavaScript", filters: ["WEB & PWA"] },
       { name: "TypeScript", filters: ["WEB & PWA", "POSTGRESQL"] },
       { name: "Node.js", filters: ["WEB & PWA"] },
     ],
@@ -65,6 +66,7 @@ const CATEGORIES: Category[] = [
     title: "WEB & PWA ARCHITECTURE",
     icon: Globe,
     skills: [
+      { name: "HTML5 / CSS3", filters: ["WEB & PWA"] },
       { name: "Next.js (App Router)", filters: ["WEB & PWA", "POSTGRESQL"] },
       { name: "React", filters: ["WEB & PWA"] },
       { name: "Tailwind CSS", filters: ["WEB & PWA"] },
@@ -87,20 +89,20 @@ export function TechMatrix() {
   const [activeFilter, setActiveFilter] = useState<FilterId>("ALL");
 
   return (
-    <section id="stack" className="py-16 border-b border-obsidian-border space-y-10">
+    <section id="skills" className="py-16 border-b border-obsidian-border space-y-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span className="font-mono text-xs uppercase tracking-wider text-slate-muted flex items-center gap-2">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent-emerald" />
-            02 // TECH_MATRIX
+            02 // CAPABILITIES
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-text font-display uppercase mt-1">
-            Architecture &amp; Toolchain
+            TECH STACK &amp; CAPABILITIES
           </h2>
         </div>
         <p className="font-mono text-xs text-slate-muted max-w-sm">
-          <TypewriterText text="System runtimes, relational database engines, and client-side application frameworks." />
+          <TypewriterText text="Core programming languages, database engines, desktop runtimes, and web frameworks." />
         </p>
       </div>
 
